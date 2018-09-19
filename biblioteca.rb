@@ -52,7 +52,7 @@ class Biblioteca
 
   def self.ultimo_id
     files = Dir.entries("db/livros").sort_by do |file|
-      File.birthtime("#{"db/livros"}/#{file}")
+      File.ctime("#{"db/livros"}/#{file}")
     end
     File.basename "db/livros/#{files.last}", ".yml"
   end
