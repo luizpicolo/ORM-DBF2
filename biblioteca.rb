@@ -3,8 +3,8 @@ class Biblioteca
   @@path = 'db/livros'
 
   def self.salvar(livro)
-    id = quantidade_registros #para acrescentar o auto incremendo no id
-    File.open("db/livros/#{id}.yml", "a") do |arquivo| #cria o arquivo de id na pasta db/livro
+    id = quantidade_registros
+    File.open("db/livros/#{id}.yml", "a") do |arquivo|
       livro.id = id
       arquivo.puts YAML.dump livro
     end
@@ -43,7 +43,7 @@ class Biblioteca
   private
 
   def self.verifica_id(livro)
-    id = livro.id.nil? ? proximo_id : livro.id
+    livro.id.nil? ? proximo_id : livro.id
   end
 
   def self.quantidade_registros
@@ -54,7 +54,7 @@ class Biblioteca
     files = Dir.entries("db/livros").sort_by do |file|
       File.birthtime("#{"db/livros"}/#{file}")
     end
-    File.basename "db/livros/#{files.last}", "yml"
+    File.basename "db/livros/#{files.last}", ".yml"
   end
 
   def self.proximo_id
