@@ -35,7 +35,7 @@ class Biblioteca
     @livros_selecionados
   end
 
-  def atualizar(livro)
+  def self.atualizar(livro)
     FileUtils.rm "db/livros/#{livros.id}.yml"
     salvar(livro)
   end
