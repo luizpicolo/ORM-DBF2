@@ -1,0 +1,6 @@
+--- !ruby/object:Livro
+titulo: TDD by Picolo
+categoria: Técnico
+autor: Luiz Picolo
+isbn: 123456
+id: 5
