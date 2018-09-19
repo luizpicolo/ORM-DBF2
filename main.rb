@@ -7,8 +7,10 @@ require_relative "biblioteca"
 livro = Livro.new "TDD by Picolo 2", "Técnico", "Luiz Picolo", 123456
 Biblioteca.salvar(livro)
 
-livros = Biblioteca.listar
+puts Biblioteca.ultimo_id
 
-livros.each do |livro|
-  puts livro.titulo
-end
+livros = Biblioteca.selecionar('TDD by Picolo 2')
+
+# livros.each do |livro|
+#   puts livro.titulo
+# end
