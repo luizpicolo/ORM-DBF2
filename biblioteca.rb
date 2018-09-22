@@ -3,7 +3,7 @@ class Biblioteca
   @@path = 'db/livros'
 
   def self.salvar(livro)
-    id = quantidade_registros
+    id = verifica_id(livro)
     File.open("db/livros/#{id}.yml", "a") do |arquivo|
       livro.id = id
       arquivo.puts YAML.dump livro
@@ -35,8 +35,8 @@ class Biblioteca
     @livros_selecionados
   end
 
-  def atualizar(livro)
-    FileUtils.rm "db/livros/#{livros.id}.yml"
+  def self.atualizar(livro)
+    FileUtils.rm "db/livros/#{livro.id}.yml"
     salvar(livro)
   end
 
@@ -52,7 +52,7 @@ class Biblioteca
 
   def self.ultimo_id
     files = Dir.entries("db/livros").sort_by do |file|
-      File.birthtime("#{"db/livros"}/#{file}")
+      File.ctime("#{"db/livros"}/#{file}")
     end
     File.basename "db/livros/#{files.last}", ".yml"
   end
