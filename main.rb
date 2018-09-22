@@ -2,14 +2,25 @@ require "yaml"
 require "fileutils"
 require_relative "file"
 require_relative "livro"
-require_relative "biblioteca"
+require_relative "carro"
 
-livro = Livro.new "TDD by Picolo 2", "Técnico", "Luiz Picolo", 123456
-Biblioteca.salvar(livro)
+Livro.criar(
+  titulo: 'TDDD',
+  categoria: 'Técnico',
+  autor: 'Sou eu',
+  isbn: 123456
+)
 
-livro.titulo = "TDD by Picolo 3"
+Carro.criar(
+  modelo: 'TDDD'
+)
 
-Biblioteca.atualizar(livro)
+# livro = Livro.new "TDD by Picolo 2", "Técnico", "Luiz Picolo", 123456
+# Biblioteca.salvar(livro)
+#
+# livro.titulo = "TDD by Picolo 3"
+#
+# Biblioteca.atualizar(livro)
 
 # puts Biblioteca.ultimo_id
 #

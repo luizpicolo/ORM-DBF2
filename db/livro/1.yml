@@ -1,0 +1,12 @@
+--- !ruby/object:Livro
+titulo: TDDD
+categoria: Técnico
+autor: Sou eu
+isbn: 123456
+id: 1
+--- !ruby/object:Livro
+titulo: TDDD
+categoria: Técnico
+autor: Sou eu
+isbn: 123456
+id: 1

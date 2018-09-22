@@ -1,12 +1,13 @@
-class Biblioteca
+class ORM
 
-  @@path = 'db/livros'
+  # @@path = 'db/livros'
 
-  def self.salvar(livro)
-    id = verifica_id(livro)
-    File.open("db/livros/#{id}.yml", "a") do |arquivo|
-      livro.id = id
-      arquivo.puts YAML.dump livro
+  def self.criar(*atributos)
+    id = verifica_id
+    File.open("#{path}/#{id}.yml", "a") do |arquivo|
+      obj = self.new atributos
+      obj.id = id
+      arquivo.puts YAML.dump obj
     end
   end
 
@@ -42,8 +43,9 @@ class Biblioteca
 
   private
 
-  def self.verifica_id(livro)
-    livro.id.nil? ? proximo_id : livro.id
+  def self.verifica_id
+    # self.id.nil? ? proximo_id : self.id
+    proximo_id
   end
 
   def self.quantidade_registros
@@ -51,10 +53,14 @@ class Biblioteca
   end
 
   def self.ultimo_id
-    files = Dir.entries("db/livros").sort_by do |file|
-      File.ctime("#{"db/livros"}/#{file}")
+    files = Dir.entries("#{path}").sort_by do |file|
+      File.ctime("#{path}/#{file}")
     end
-    File.basename "db/livros/#{files.last}", ".yml"
+    File.basename "#{path}/#{files.last}", ".yml"
+  end
+
+  def self.path
+    "db/#{self.to_s.downcase}"
   end
 
   def self.proximo_id
