@@ -39,11 +39,12 @@ class ORM
     end
   end
 
-  private
+  def self.remove(id)
+    FileUtils.rm "#{path}/#{id}.yml"
+    return id
+  end
 
-  # def self.verifica_id(atributos)
-  #   self.id.nil? ? proximo_id : self.id
-  # end
+  private
 
   def self.quantidade_registros
     Dir.glob("#{path}/*.yml").size + 1

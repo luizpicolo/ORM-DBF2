@@ -4,3 +4,9 @@ categoria: Técnico
 autor: Sou eu
 isbn: 123456
 id: 2
+--- !ruby/object:Livro
+titulo: Titulo
+categoria: Técnico
+autor: Sou eu
+isbn: 123456
+id: 2

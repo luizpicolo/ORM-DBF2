@@ -15,3 +15,5 @@ livro = Livro.selecionar(1)
 livro.titulo = "Titulo 3"
 
 Livro.atualizar(livro)
+
+Livro.remove(4)
