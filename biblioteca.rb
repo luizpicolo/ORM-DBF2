@@ -3,7 +3,7 @@ class Biblioteca
   @@path = 'db/livros'
 
   def self.salvar(livro)
-    id = quantidade_registros
+    id = verifica_id(livro)
     File.open("db/livros/#{id}.yml", "a") do |arquivo|
       livro.id = id
       arquivo.puts YAML.dump livro
@@ -36,7 +36,7 @@ class Biblioteca
   end
 
   def self.atualizar(livro)
-    FileUtils.rm "db/livros/#{livros.id}.yml"
+    FileUtils.rm "db/livros/#{livro.id}.yml"
     salvar(livro)
   end
 

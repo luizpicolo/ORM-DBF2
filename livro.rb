@@ -1,4 +1,4 @@
-require 'active_support/inflector'
+# require 'active_support/inflector'
 
 class Livro
   attr_accessor :id, :titulo, :categoria, :autor, :isbn
@@ -8,7 +8,7 @@ class Livro
     @categoria = categoria
     @autor = autor
     @isbn = isbn
-    @dir = "db/#{self.class.to_s.downcase.pluralize}"
+    @dir = "db/#{self.class.to_s.downcase}"
 
     criar_db
   end
